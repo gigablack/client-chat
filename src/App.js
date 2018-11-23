@@ -14,7 +14,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App bg-light">
+      <div className="App">
         
         
         <div className='row'>
