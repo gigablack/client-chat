@@ -28,7 +28,7 @@ const { ADD_MESSAGE,
     })
 
 
-const socket = io('http://localhost:4000')
+const socket = io('https://server-react-chat.now.sh/')
 
 const initialState = {
     input: '',
