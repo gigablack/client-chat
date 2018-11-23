@@ -7,6 +7,7 @@ export const ACTIONS = {
     UPDATE_USER_LIST: 'UPDATE_USER_LIST',
     NEW_MESSAGE: 'NEW_MESSAGE',
     SET_USER_COLORS: 'SET_USER_COLORS',
+    INIT_APP: 'INIT_APP',
 
     addMessage(message){
         return {
@@ -60,6 +61,12 @@ export const ACTIONS = {
     setUserColors(){
         return {
             type: 'SET_USER_COLORS',
+        }
+    },
+
+    initApp(){
+        return {
+            type: 'INIT_APP'
         }
     }
 }

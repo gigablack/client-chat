@@ -2,11 +2,17 @@ import React,{Component} from 'react'
 import Form from './Form'
 import Messages from './Messages'
 import UserList from './UserList'
+import $ from 'jquery'
+import { connect } from 'react-redux'
 
 class Chat extends Component {
     render(){
+        const {appIsInit} = this.props
+        if(appIsInit){
+            $('#chat').removeClass('d-none').addClass('zoomIn slow delay-2s')
+        }
         return (
-            <div className='container h-75 shadow-lg rounded p-5 chat animated zoomIn slow delay-5s'>
+            <div className='container h-75 shadow-lg rounded p-5 chat animated d-none' id='chat'>
                 
                 
                 <div className='row h-100'>
@@ -23,4 +29,10 @@ class Chat extends Component {
     }
 }
 
-export default Chat
+const mapStateToProps = (state) => {
+    return {
+        appIsInit: state.init
+    }
+}
+
+export default connect(mapStateToProps)(Chat)

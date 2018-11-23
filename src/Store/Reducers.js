@@ -8,7 +8,8 @@ const { ADD_MESSAGE,
     ADD_USER,
     REMOVE_USER,
     UPDATE_USER_LIST,
-    NEW_MESSAGE,setUsername,SET_USER_COLORS,setUserColors } = ACTIONS
+    NEW_MESSAGE,setUsername,SET_USER_COLORS,setUserColors,
+    INIT_APP,initApp } = ACTIONS
 
     swal({
         title: 'Introduce tu nombre de Usuario',
@@ -21,6 +22,8 @@ const { ADD_MESSAGE,
         swal({
             icon: 'success',
             title: `BIENVENID@ ${store.getState().username}`
+        }).then(() =>{
+            store.dispatch(initApp())
         })
     })
 
@@ -34,7 +37,8 @@ const initialState = {
     username: 'DESCONOCIDO',
     usersOnline: [],
     bgAlert: 'secondary',
-    bgPills: 'dark'
+    bgPills: 'dark',
+    init: false
 }
 
 export const addMessageReducer = (state = initialState,action)=>{
@@ -93,6 +97,12 @@ export const addMessageReducer = (state = initialState,action)=>{
                 ...state,
                 bgAlert,
                 bgPills
+            }
+
+        case INIT_APP:
+            return {
+                ...state,
+                init: true
             }
 
         default:

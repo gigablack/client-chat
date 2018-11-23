@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
+import $ from 'jquery'
 
 const { addMessage, textChanging, setUsername } = ACTIONS
 class Form extends Component {
@@ -31,7 +32,10 @@ class Form extends Component {
     }
 
     render(){
-        const {input} = this.props
+        const {input,appIsInit} = this.props
+        if(appIsInit){
+            $('.form-control').focus()
+        }
         return (
             <div className='h-25 my-5 rounded'>
                 <form onSubmit={this.submitMessage}>
@@ -57,7 +61,8 @@ const mapStateToProps = (state) =>{
         socket: state.socket,
         username: state.username,
         bgAlert: state.bgAlert,
-        bgPills: state.bgPills
+        bgPills: state.bgPills,
+        appIsInit: state.init
     }
 }
 
