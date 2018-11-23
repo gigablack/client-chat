@@ -6,7 +6,7 @@ import UserList from './UserList'
 class Chat extends Component {
     render(){
         return (
-            <div className='container h-75 shadow-lg rounded p-5 chat'>
+            <div className='container h-75 shadow-lg rounded p-5 chat animated zoomIn slow delay-5s'>
                 
                 
                 <div className='row h-100'>

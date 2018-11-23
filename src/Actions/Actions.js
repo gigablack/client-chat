@@ -6,6 +6,7 @@ export const ACTIONS = {
     REMOVE_USER: 'REMOVE_USER',
     UPDATE_USER_LIST: 'UPDATE_USER_LIST',
     NEW_MESSAGE: 'NEW_MESSAGE',
+    SET_USER_COLORS: 'SET_USER_COLORS',
 
     addMessage(message){
         return {
@@ -53,6 +54,12 @@ export const ACTIONS = {
         return {
             type: 'NEW_MESSAGE',
             message
+        }
+    },
+
+    setUserColors(){
+        return {
+            type: 'SET_USER_COLORS',
         }
     }
 }

@@ -16,10 +16,12 @@ class Form extends Component {
     }
 
     submitMessage = (event) => {
-        const {input,username,socket} = this.props
+        const {input,username,socket,bgAlert,bgPills} = this.props
         const message = {
             user: username,
-            message: input
+            message: input,
+            bgAlert,
+            bgPills
         }
         event.preventDefault()
         if(!input) return
@@ -37,7 +39,7 @@ class Form extends Component {
                     
                     <div className='row h-100'>
                         <div className='col-10'>
-                            <input type='text' onChange={this.handleChange} value={input} className='form-control'/>
+                            <input type='text' onChange={this.handleChange} value={input} className='form-control' id='form-message' autoComplete='off'/>
                         </div>
                         <div className='col-2'>
                             <button type='submit' value='Enviar' className='btn btn-outline-light'><i className='fas fa-paper-plane mr-2'></i>Enviar</button>
@@ -53,7 +55,9 @@ const mapStateToProps = (state) =>{
     return {
         input: state.input,
         socket: state.socket,
-        username: state.username
+        username: state.username,
+        bgAlert: state.bgAlert,
+        bgPills: state.bgPills
     }
 }
 

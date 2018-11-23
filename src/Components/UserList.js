@@ -26,7 +26,7 @@ class UserList extends Component {
         })
         return (
             <div className='h-100'>
-            <h2>Online Users</h2>
+            <h3 className='app-title'>Online Users</h3>
                 <ul className='list-group'>{users}</ul>
             </div>
         )

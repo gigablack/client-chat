@@ -8,30 +8,33 @@ const { ADD_MESSAGE,
     ADD_USER,
     REMOVE_USER,
     UPDATE_USER_LIST,
-    NEW_MESSAGE,setUsername } = ACTIONS
+    NEW_MESSAGE,setUsername,SET_USER_COLORS,setUserColors } = ACTIONS
 
     swal({
         title: 'Introduce tu nombre de Usuario',
         content: 'input',
         icon: 'info'
     }).then((value) =>{
-        store.dispatch(setUsername(value))
-        socket.emit('updateUser',value)
+        store.dispatch(setUsername(value || 'DESCONOCIDO'))
+        store.dispatch(setUserColors())
+        socket.emit('updateUser',value || 'DESCONOCIDO')
         swal({
             icon: 'success',
             title: `BIENVENID@ ${store.getState().username}`
         })
     })
 
-const username = ''
+
 const socket = io('http://localhost:4000')
 
 const initialState = {
     input: '',
     messages: [],
     socket,
-    username: username || 'DESCONOCIDO',
-    usersOnline: []
+    username: 'DESCONOCIDO',
+    usersOnline: [],
+    bgAlert: 'secondary',
+    bgPills: 'dark'
 }
 
 export const addMessageReducer = (state = initialState,action)=>{
@@ -80,6 +83,16 @@ export const addMessageReducer = (state = initialState,action)=>{
             return {
                 ...state,
                 messages: [...state.messages,action.message]
+            }
+
+        case SET_USER_COLORS:
+            const colors = ['primary','secondary','success','danger','warning','info','light','dark']
+            const bgAlert = colors[Math.floor(Math.random() * colors.length)]
+            const bgPills = colors[Math.floor(Math.random() * colors.length)]
+            return {
+                ...state,
+                bgAlert,
+                bgPills
             }
 
         default:
