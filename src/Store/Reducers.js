@@ -1,17 +1,17 @@
 import { ACTIONS } from '../Actions/Actions'
 import io from 'socket.io-client'
-import swal from 'sweetalert'
-import store from './Store'
+//import swal from 'sweetalert'
+//import store from './Store'
 const { ADD_MESSAGE,
     TEXT_CHANGING,
     SET_USERNAME,
     ADD_USER,
     REMOVE_USER,
     UPDATE_USER_LIST,
-    NEW_MESSAGE,setUsername,SET_USER_COLORS,setUserColors,
-    INIT_APP,initApp } = ACTIONS
+    NEW_MESSAGE,SET_USER_COLORS,
+    INIT_APP } = ACTIONS
 
-    swal({
+    /*swal({
         title: 'Introduce tu nombre de Usuario',
         content: 'input',
         icon: 'info'
@@ -25,7 +25,7 @@ const { ADD_MESSAGE,
         }).then(() =>{
             store.dispatch(initApp())
         })
-    })
+    })*/
 
 
 const socket = io('https://server-react-chat.now.sh/')

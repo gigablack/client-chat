@@ -16,10 +16,10 @@ class Messages extends Component {
     render(){
 
         const messages = this.props.messages.map((message,index) => {
-            return (<div className={`alert alert-${message.bgAlert} mb-1 rounded nunito font-weight-bold font-size-pills`} key={index}><span className={`badge badge-pill badge-${message.bgPills}`}>{message.user}</span><i className='fas fa-angle-double-right'></i>   <span className='font-italic'>{message.message}</span></div>)
+            return (<div key={index}><span >{message.user}</span>   <span>{message.message}</span></div>)
         })
         return (
-            <div className='h-75 shadow-lg rounded p-5 messages bg-secondary' id='messages'>
+            <div className='' id='messages'>
                 <div className=''>{messages}</div>
             </div>
         )

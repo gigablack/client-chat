@@ -25,9 +25,9 @@ class UserList extends Component {
             return (<li key={user.id} className='list-group-item justify-content-between d-flex h6 nunito'><i className='fas fa-user'></i>{user.user} <span className="badge badge-success badge-pill online">{' '}</span></li>)
         })
         return (
-            <div className='h-100'>
+            <div className=''>
             <h3 className='app-title'>Online Users</h3>
-                <ul className='list-group'>{users}</ul>
+                <ul className=''>{users}</ul>
             </div>
         )
     }

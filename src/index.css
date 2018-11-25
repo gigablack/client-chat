@@ -6,8 +6,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 code {
@@ -15,60 +13,12 @@ code {
     monospace;
 }
 
-.App {
-  height: 100vh;
-  background: #BBD2C5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-}
-
-.chat {
-  height: 75vh;
-  background: #9796f0;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #fbc7d4, #9796f0);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-.messages {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  background: #FFEFBA;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-.online {
-  background-color: rgb(99, 253, 28)
-}
-
-.nunito {
-  font-family: 'Nunito', sans-serif;
-}
-
-.font-size-pills {
-  font-size: 1em;
-}
-
-.planet {
-  max-width: 120px;
-}
 
 .swal-overlay {
   background-color: rgba(43, 165, 137, 0.45);
 }
 
-.app-title {
-  font-family: 'Orbitron', sans-serif;
-  background: #304352;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #d7d2cc, #304352);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #d7d2cc, #304352); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /*text-shadow: -5px -5px;*/
-
+#messages {
+  height: 84vh;
 }

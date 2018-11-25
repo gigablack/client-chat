@@ -1,7 +1,9 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
-import $ from 'jquery'
+//import $ from 'jquery'
+import {Grid, FormControl,TextField,InputAdornment, IconButton} from '@material-ui/core'
+import { Message } from '@material-ui/icons'
 
 const { addMessage, textChanging, setUsername } = ACTIONS
 class Form extends Component {
@@ -34,22 +36,26 @@ class Form extends Component {
     render(){
         const {input,appIsInit} = this.props
         if(appIsInit){
-            $('.form-control').focus()
+            //$('.form-control').focus()
         }
         return (
-            <div className='h-25 my-5 rounded'>
-                <form onSubmit={this.submitMessage}>
-                    
-                    
-                    <div className='row h-100'>
-                        <div className='col-10'>
-                            <input type='text' onChange={this.handleChange} value={input} className='form-control' id='form-message' autoComplete='off'/>
-                        </div>
-                        <div className='col-2'>
-                            <button type='submit' value='Enviar' className='btn btn-outline-light'><i className='fas fa-paper-plane mr-2'></i>Enviar</button>
-                        </div>
-                    </div>
-                </form>
+            <div className=''>
+                <Grid container>
+                    <Grid item xs={8}>
+                        <FormControl>
+                            <TextField  multiline InputProps={{
+                                startAdornment : (
+                                    <InputAdornment position='start' >
+                                        <Message />
+                                    </InputAdornment>
+                                )
+                            }}/>
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={4}>
+                        boton
+                    </Grid>
+                </Grid>
             </div>
         )
     }
