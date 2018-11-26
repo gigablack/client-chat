@@ -50,6 +50,9 @@ class App extends Component {
                 Reactive Chat
               </Typography>
             </Hidden>
+            <Typography color='inherit'>
+              built for <a href='https://twitter.com/Gadolfth' target='_blank' rel='noopener noreferrer' style={{color:'white'}}>@Gadolfth</a>
+            </Typography>
             <Hidden smUp>
               <IconButton color='inherit' onClick={this.handleClick}>
                 <Badge  badgeContent={usersOnline.length} color='secondary' invisible={usersOnline.length < 1}> 
@@ -59,6 +62,7 @@ class App extends Component {
             </Hidden>
           </Toolbar>
         </AppBar>
+
         <Grid container justify='center'>
           <Grid item xs={12} sm={5}>
             <Chat />
