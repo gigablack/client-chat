@@ -42,12 +42,12 @@ class App extends Component {
           <Toolbar>
             <Hidden smUp>
               <Typography variant='h6' color='inherit' style={{flexGrow:1}}>
-                Reactive Chat
+                Reactive Chat 2.0
               </Typography>
             </Hidden>
             <Hidden only='xs'>
               <Typography variant='h4' color='inherit' style={{flexGrow:1}}>
-                Reactive Chat
+                Reactive Chat 2.0
               </Typography>
             </Hidden>
             <Typography color='inherit'>
