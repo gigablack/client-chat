@@ -1,7 +1,19 @@
 import { ACTIONS } from '../Actions/Actions'
 import io from 'socket.io-client'
-//import swal from 'sweetalert'
-//import store from './Store'
+import swal from 'sweetalert'
+import store from './Store'
+import {red,
+    pink,
+    purple,
+    deepPurple,
+    indigo,
+    blue,
+    lightBlue,
+    cyan,
+    teal,
+    green,
+    lightGreen,
+    lime,yellow,amber,orange,deepOrange,brown,grey,blueGrey} from '@material-ui/core/colors'
 const { ADD_MESSAGE,
     TEXT_CHANGING,
     SET_USERNAME,
@@ -9,9 +21,9 @@ const { ADD_MESSAGE,
     REMOVE_USER,
     UPDATE_USER_LIST,
     NEW_MESSAGE,SET_USER_COLORS,
-    INIT_APP } = ACTIONS
+    INIT_APP,setUsername,setUserColors,initApp } = ACTIONS
 
-    /*swal({
+    swal({
         title: 'Introduce tu nombre de Usuario',
         content: 'input',
         icon: 'info'
@@ -25,7 +37,7 @@ const { ADD_MESSAGE,
         }).then(() =>{
             store.dispatch(initApp())
         })
-    })*/
+    })
 
 
 const socket = io('https://server-react-chat.now.sh/')
@@ -36,8 +48,8 @@ const initialState = {
     socket,
     username: 'DESCONOCIDO',
     usersOnline: [],
-    bgAlert: 'secondary',
-    bgPills: 'dark',
+    bgPaper: '',
+    bgAvatar: '',
     init: false
 }
 
@@ -90,13 +102,14 @@ export const addMessageReducer = (state = initialState,action)=>{
             }
 
         case SET_USER_COLORS:
-            const colors = ['primary','secondary','success','danger','warning','info','light','dark']
-            const bgAlert = colors[Math.floor(Math.random() * colors.length)]
-            const bgPills = colors[Math.floor(Math.random() * colors.length)]
+            const colors = [red,pink,purple,deepPurple,indigo,blue,lightBlue,cyan,teal,green,lightGreen,lime,yellow,amber,orange,deepOrange,brown,grey,blueGrey]
+            const colorLevel = [50,100,200,300,400,500,600,700,800,900]
+            const bgPaper = colors[Math.floor(Math.random() * colors.length)][colorLevel[Math.floor(Math.random() * colorLevel.length)]]
+            const bgAvatar = colors[Math.floor(Math.random() * colors.length)][colorLevel[Math.floor(Math.random() * colorLevel.length)]]
             return {
                 ...state,
-                bgAlert,
-                bgPills
+                bgPaper,
+                bgAvatar
             }
 
         case INIT_APP:

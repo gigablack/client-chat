@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
+import {Zoom,Paper,Avatar,Typography,Grid} from '@material-ui/core'
 
 const {newMessage} = ACTIONS
 
@@ -10,17 +11,38 @@ class Messages extends Component {
         socket.on('message',(message) =>{
             console.log(message)
             newMessage(message)
-            document.getElementById('messages').scrollBy(0,10000)
+            
         })
+    }
+    componentDidUpdate(){
+        document.querySelector('#messages').scrollBy(0,1000)
     }
     render(){
 
         const messages = this.props.messages.map((message,index) => {
-            return (<div key={index}><span >{message.user}</span>   <span>{message.message}</span></div>)
+            return (
+                <Zoom key={index} in={true}>
+                    <Paper style={{padding:'10px',marginBottom: '5px', backgroundColor: message.bgPaper}}>
+                        <Grid container>
+                            <Grid item xs={2}>
+                                <Avatar style={{backgroundColor: message.bgAvatar}}>{message.user[0]}</Avatar>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <Typography variant='caption'>
+                                    {message.user}
+                                </Typography>
+                                <Typography variant='body2' color='inherit'>
+                                    {message.message}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Zoom>
+            )
         })
         return (
-            <div className='' id='messages'>
-                <div className=''>{messages}</div>
+            <div className='' id='messages' style={{padding: '10px',overflowY: 'auto',height: '80vh'}}>
+                    <div className='' >{messages}</div>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
+import { Typography,List,ListItem,ListItemAvatar,ListItemText } from '@material-ui/core'
 
 const { addUser,removeUser,updateUserList } = ACTIONS
 
@@ -9,6 +10,7 @@ class UserList extends Component {
         const { socket,removeUser,updateUserList,addUser } = this.props
         
         socket.on('userConnect',(user)=>{
+            console.log('new user')
             addUser(user)
         })
 
@@ -22,12 +24,18 @@ class UserList extends Component {
     }
     render(){
         const users = this.props.usersOnline.map((user) =>{
-            return (<li key={user.id} className='list-group-item justify-content-between d-flex h6 nunito'><i className='fas fa-user'></i>{user.user} <span className="badge badge-success badge-pill online">{' '}</span></li>)
+            return (
+            <ListItem key={user.id} divider>
+                <ListItemAvatar>{user.user[0]}</ListItemAvatar>
+                <ListItemText>{user.user}</ListItemText>
+            </ListItem>)
         })
         return (
             <div className=''>
-            <h3 className='app-title'>Online Users</h3>
-                <ul className=''>{users}</ul>
+                <Typography variant='h6'>
+                    Online Users
+                </Typography>
+                <List>{users}</List>
             </div>
         )
     }
