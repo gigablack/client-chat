@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
-import { Typography,List,ListItem,ListItemAvatar,ListItemText } from '@material-ui/core'
+import { Typography,List,ListItem,ListItemText,Avatar } from '@material-ui/core'
 
 const { addUser,removeUser,updateUserList } = ACTIONS
 
@@ -26,7 +26,7 @@ class UserList extends Component {
         const users = this.props.usersOnline.map((user) =>{
             return (
             <ListItem key={user.id} divider>
-                <ListItemAvatar>{user.user[0]}</ListItemAvatar>
+                <Avatar>{user.user[0]}</Avatar>
                 <ListItemText>{user.user}</ListItemText>
             </ListItem>)
         })
