@@ -5,11 +5,37 @@ import { connect } from 'react-redux'
 import {AppBar,Toolbar,Typography,Grid , Hidden , IconButton,Badge,Drawer} from '@material-ui/core'
 import {AccountCircle} from '@material-ui/icons'
 import UserList from './Components/UserList'
+import { ACTIONS } from './Actions/Actions'
+
+const {addUser,removeUser,updateUserList,toggleList} = ACTIONS
 
 class App extends Component {
+  componentDidMount(){
+    const {socket,addUser,removeUser,updateUserList} = this.props
+
+    socket.on('userConnect',(user)=>{
+      console.log('new user')
+      addUser(user)
+    })
+
+    socket.on('userDisconnected',(userID) => {
+      removeUser(userID)
+    })
+
+    socket.on('updateUser',(user) =>{
+      updateUserList(user)
+    })
+  }
+
+  handleClick(){
+    const {toggleList} = this.props
+
+    toggleList()
+  }
+
 
   render() {
-    const {usersOnline} = this.props
+    const {usersOnline,listOpen} = this.props
     return (
       <div className="App">
         <AppBar position='static' color='primary'>
@@ -24,8 +50,8 @@ class App extends Component {
                 Reactive Chat
               </Typography>
             </Hidden>
-            <IconButton color='inherit' >
-              <Badge  badgeContent={usersOnline.length} color='secondary'> 
+            <IconButton color='inherit' onClick={this.handleClick}>
+              <Badge  badgeContent={usersOnline.length} color='secondary' invisible={usersOnline.length < 1}> 
                 <AccountCircle  />
               </Badge>
             </IconButton>
@@ -36,7 +62,7 @@ class App extends Component {
             <Chat />
           </Grid>
         </Grid>
-        <Drawer open={true}>
+        <Drawer open={listOpen}>
           <UserList />
         </Drawer>
       </div>
@@ -47,8 +73,30 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     appIsInit: state.init,
-    usersOnline: state.usersOnline
+    usersOnline: state.usersOnline,
+    socket: state.socket,
+    listOpen: state.listOpen
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addUser(user){
+      dispatch(addUser(user))
+    },
+
+    removeUser(userID){
+      dispatch(removeUser(userID))
+    },
+
+    updateUserList(user){
+      dispatch(updateUserList(user))
+    },
+
+    toggleList(){
+      dispatch(toggleList())
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

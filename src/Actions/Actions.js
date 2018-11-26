@@ -8,6 +8,7 @@ export const ACTIONS = {
     NEW_MESSAGE: 'NEW_MESSAGE',
     SET_USER_COLORS: 'SET_USER_COLORS',
     INIT_APP: 'INIT_APP',
+    TOGGLE_LIST: 'TOGGLE_LIST',
 
     addMessage(message){
         return {
@@ -67,6 +68,12 @@ export const ACTIONS = {
     initApp(){
         return {
             type: 'INIT_APP'
+        }
+    },
+
+    toggleList(){
+        return {
+            type: 'TOGGLE_LIST'
         }
     }
 }

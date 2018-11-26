@@ -21,7 +21,7 @@ const { ADD_MESSAGE,
     REMOVE_USER,
     UPDATE_USER_LIST,
     NEW_MESSAGE,SET_USER_COLORS,
-    INIT_APP,setUsername,setUserColors,initApp } = ACTIONS
+    INIT_APP,setUsername,setUserColors,initApp,TOGGLE_LIST } = ACTIONS
 
     swal({
         title: 'Introduce tu nombre de Usuario',
@@ -50,7 +50,8 @@ const initialState = {
     usersOnline: [],
     bgPaper: '',
     bgAvatar: '',
-    init: false
+    init: false,
+    listOpen: false
 }
 
 export const addMessageReducer = (state = initialState,action)=>{
@@ -116,6 +117,12 @@ export const addMessageReducer = (state = initialState,action)=>{
             return {
                 ...state,
                 init: true
+            }
+
+        case TOGGLE_LIST:
+            return {
+                ...state,
+                listOpen: !state.listOpen
             }
 
         default:

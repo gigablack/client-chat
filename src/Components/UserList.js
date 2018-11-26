@@ -6,22 +6,7 @@ import { Typography,List,ListItem,ListItemText,Avatar } from '@material-ui/core'
 const { addUser,removeUser,updateUserList } = ACTIONS
 
 class UserList extends Component {
-    componentDidMount(){
-        const { socket,removeUser,updateUserList,addUser } = this.props
-        
-        socket.on('userConnect',(user)=>{
-            console.log('new user')
-            addUser(user)
-        })
-
-        socket.on('userDisconnected',(userID) => {
-            removeUser(userID)
-        })
-
-        socket.on('updateUser',(user) =>{
-            updateUserList(user)
-        })
-    }
+    
     render(){
         const users = this.props.usersOnline.map((user) =>{
             return (
