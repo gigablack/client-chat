@@ -27,7 +27,7 @@ class App extends Component {
     })
   }
 
-  handleClick(){
+  handleClick = () => {
     const {toggleList} = this.props
 
     toggleList()
@@ -50,19 +50,26 @@ class App extends Component {
                 Reactive Chat
               </Typography>
             </Hidden>
-            <IconButton color='inherit' onClick={this.handleClick}>
-              <Badge  badgeContent={usersOnline.length} color='secondary' invisible={usersOnline.length < 1}> 
-                <AccountCircle  />
-              </Badge>
-            </IconButton>
+            <Hidden smUp>
+              <IconButton color='inherit' onClick={this.handleClick}>
+                <Badge  badgeContent={usersOnline.length} color='secondary' invisible={usersOnline.length < 1}> 
+                  <AccountCircle  />
+                </Badge>
+              </IconButton>
+            </Hidden>
           </Toolbar>
         </AppBar>
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container justify='center'>
+          <Grid item xs={12} sm={5}>
             <Chat />
           </Grid>
+          <Hidden only='xs'>
+            <Grid item sm={3}>
+              <UserList />
+            </Grid>
+          </Hidden>
         </Grid>
-        <Drawer open={listOpen}>
+        <Drawer open={listOpen} onClose={this.handleClick}>
           <UserList />
         </Drawer>
       </div>

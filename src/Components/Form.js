@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import { ACTIONS } from '../Actions/Actions'
 import $ from 'jquery'
-import {Grid, FormControl,TextField,InputAdornment, IconButton} from '@material-ui/core'
+import {Grid, FormControl,TextField,InputAdornment, IconButton, Hidden,Button} from '@material-ui/core'
 import { Message, Send } from '@material-ui/icons'
 
 const { addMessage, textChanging, setUsername } = ACTIONS
@@ -65,9 +65,17 @@ class Form extends Component {
                                 </FormControl>
                             </Grid>
                             <Grid item xs={2}>
-                                <IconButton color='secondary' onClick={this.submitMessage}>
-                                    <Send />
-                                </IconButton>
+                                <Hidden smUp>
+                                    <IconButton color='secondary' onClick={this.submitMessage}>
+                                        <Send />
+                                    </IconButton>
+                                </Hidden>
+                                <Hidden only='xs'>
+                                    <Button variant='contained' color='secondary'>
+                                        SEND
+                                        <Send />
+                                    </Button>
+                                </Hidden>
                             </Grid>
                         </Grid>
                     </form>
