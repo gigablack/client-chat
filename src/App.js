@@ -51,7 +51,7 @@ class App extends Component {
               </Typography>
             </Hidden>
             <Typography color='inherit'>
-              built for <a href='https://twitter.com/Gadolfth' target='_blank' rel='noopener noreferrer' style={{color:'white'}}>@Gadolfth</a>
+              built by <a href='https://twitter.com/Gadolfth' target='_blank' rel='noopener noreferrer' style={{color:'white'}}>@Gadolfth</a>
             </Typography>
             <Hidden smUp>
               <IconButton color='inherit' onClick={this.handleClick}>
