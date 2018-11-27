@@ -14,6 +14,7 @@ import {red,
     green,
     lightGreen,
     lime,yellow,amber,orange,deepOrange,brown,grey,blueGrey} from '@material-ui/core/colors'
+
 const { ADD_MESSAGE,
     TEXT_CHANGING,
     SET_USERNAME,
@@ -21,7 +22,7 @@ const { ADD_MESSAGE,
     REMOVE_USER,
     UPDATE_USER_LIST,
     NEW_MESSAGE,SET_USER_COLORS,
-    INIT_APP,setUsername,setUserColors,initApp,TOGGLE_LIST } = ACTIONS
+    INIT_APP,setUsername,setUserColors,initApp,TOGGLE_LIST,USER_TYPING,CLEAR_USER_TYPING } = ACTIONS
 
     swal({
         title: 'Introduce tu nombre de Usuario',
@@ -51,7 +52,8 @@ const initialState = {
     bgPaper: '',
     bgAvatar: '',
     init: false,
-    listOpen: false
+    listOpen: false,
+    userIsTyping: ''
 }
 
 export const addMessageReducer = (state = initialState,action)=>{
@@ -123,6 +125,18 @@ export const addMessageReducer = (state = initialState,action)=>{
             return {
                 ...state,
                 listOpen: !state.listOpen
+            }
+
+        case USER_TYPING:
+            return {
+                ...state,
+                userIsTyping: `${action.username} is typing...`
+            }
+
+        case CLEAR_USER_TYPING:
+            return {
+                ...state,
+                userIsTyping: ''
             }
 
         default:

@@ -1,17 +1,31 @@
 import React,{Component} from 'react'
 import Form from './Form'
 import Messages from './Messages'
-//import UserList from './UserList'
-//import $ from 'jquery'
 import { connect } from 'react-redux'
-import { Paper } from '@material-ui/core'
+import { Paper,Typography } from '@material-ui/core'
+import {ACTIONS} from '../Actions/Actions'
+
+const {userIsTyping,clearUserTyping} = ACTIONS
 
 class Chat extends Component {
+    componentDidUpdate(){
+        const {socket,userTyping,clearUserTyping} = this.props
+        socket.on('typing',(username)=>{
+            userTyping(username)
+            
+            setTimeout(()=>{
+                clearUserTyping()
+            },3000)
+        })
+        
+    }
     render(){
+        const {userIsTyping} = this.props
         return (
             <div className='' id='chat'>
                 <Paper>
                     <Messages />
+                    <Typography variant='caption'><em>{userIsTyping}</em></Typography>
                 </Paper>
                     <Form />
             </div>
@@ -21,8 +35,22 @@ class Chat extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        appIsInit: state.init
+        appIsInit: state.init,
+        socket: state.socket,
+        userIsTyping: state.userIsTyping
     }
 }
 
-export default connect(mapStateToProps)(Chat)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userTyping(username){
+            dispatch(userIsTyping(username))
+        },
+
+        clearUserTyping(){
+            dispatch(clearUserTyping())
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Chat)

@@ -15,7 +15,10 @@ class Form extends Component {
     }
 
     handleChange = (event) =>{
+        const {socket, username} = this.props
+        
         this.props.textChanging(event.target.value)
+        socket.emit('typing',username)
     }
 
     handleKey = (event) => {

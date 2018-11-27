@@ -9,7 +9,6 @@ class Messages extends Component {
     componentDidMount(){
         const { socket, newMessage } = this.props
         socket.on('message',(message) =>{
-            console.log(message)
             newMessage(message)
             
         })

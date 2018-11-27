@@ -9,6 +9,8 @@ export const ACTIONS = {
     SET_USER_COLORS: 'SET_USER_COLORS',
     INIT_APP: 'INIT_APP',
     TOGGLE_LIST: 'TOGGLE_LIST',
+    USER_TYPING: 'USER_TYPING',
+    CLEAR_USER_TYPING: 'CLEAR_USER_TYPING',
 
     addMessage(message){
         return {
@@ -74,6 +76,19 @@ export const ACTIONS = {
     toggleList(){
         return {
             type: 'TOGGLE_LIST'
+        }
+    },
+
+    userIsTyping(username){
+        return {
+            type: 'USER_TYPING',
+            username
+        }
+    },
+
+    clearUserTyping(){
+        return {
+            type: 'CLEAR_USER_TYPING'
         }
     }
 }
