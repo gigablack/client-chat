@@ -25,16 +25,16 @@ const { ADD_MESSAGE,
     INIT_APP,setUsername,setUserColors,initApp,TOGGLE_LIST,USER_TYPING,CLEAR_USER_TYPING } = ACTIONS
 
     swal({
-        title: 'Introduce tu nombre de Usuario',
+        title: 'Enter your username',
         content: 'input',
         icon: 'info'
     }).then((value) =>{
-        store.dispatch(setUsername(value || 'DESCONOCIDO'))
+        store.dispatch(setUsername(value || 'UNKNOWN'))
         store.dispatch(setUserColors())
-        socket.emit('updateUser',value || 'DESCONOCIDO')
+        socket.emit('updateUser',value || 'UNKNOWN')
         swal({
             icon: 'success',
-            title: `BIENVENID@ ${store.getState().username}`
+            title: `WELCOME ${store.getState().username}`
         }).then(() =>{
             store.dispatch(initApp())
         })
@@ -47,7 +47,7 @@ const initialState = {
     input: '',
     messages: [],
     socket,
-    username: 'DESCONOCIDO',
+    username: 'UNKNOWN',
     usersOnline: [],
     bgPaper: '',
     bgAvatar: '',
