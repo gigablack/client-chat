@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import Form from './Form'
 import Messages from './Messages'
 import { connect } from 'react-redux'
-import { Paper,Typography } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import {ACTIONS} from '../Actions/Actions'
 
 const {userIsTyping,clearUserTyping} = ACTIONS
@@ -13,10 +13,12 @@ class Chat extends Component {
         socket.on('typing',(username)=>{
             userTyping(username)
             
-            setTimeout(()=>{
-                clearUserTyping()
-            },3000)
+            
         })
+
+        setTimeout(()=>{
+            clearUserTyping()
+        },5000)
         
     }
     render(){
@@ -24,8 +26,7 @@ class Chat extends Component {
         return (
             <div className='' id='chat'>
                 <Paper>
-                    <Messages />
-                    <Typography variant='caption'><em>{userIsTyping}</em></Typography>
+                    <Messages userIsTyping={userIsTyping}/>
                 </Paper>
                     <Form />
             </div>
