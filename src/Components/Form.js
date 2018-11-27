@@ -16,7 +16,7 @@ class Form extends Component {
 
     handleChange = (event) =>{
         const {socket, username} = this.props
-        
+
         this.props.textChanging(event.target.value)
         socket.emit('typing',username)
     }
@@ -74,7 +74,7 @@ class Form extends Component {
                                     </IconButton>
                                 </Hidden>
                                 <Hidden only='xs'>
-                                    <Button variant='contained' color='secondary'>
+                                    <Button variant='contained' color='secondary' onClick={this.submitMessage}>
                                         SEND
                                         <Send />
                                     </Button>

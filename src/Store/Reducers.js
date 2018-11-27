@@ -53,7 +53,7 @@ const initialState = {
     bgAvatar: '',
     init: false,
     listOpen: false,
-    userIsTyping: ''
+    userIsTyping: ' '
 }
 
 export const addMessageReducer = (state = initialState,action)=>{
@@ -136,7 +136,7 @@ export const addMessageReducer = (state = initialState,action)=>{
         case CLEAR_USER_TYPING:
             return {
                 ...state,
-                userIsTyping: ''
+                userIsTyping: ' '
             }
 
         default:
